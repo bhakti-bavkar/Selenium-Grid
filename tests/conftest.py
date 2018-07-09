@@ -2,45 +2,23 @@ from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.firefox.options import Options
 import pytest
-from CommonLib import browser_platform_conf
+from Config import browser_platform_conf
+import sys
+from threading import Thread
 
-@pytest.fixture(scope='module')
+
+# def pytest_load_initial_conftests(args):
+#     if "xdist" in sys.modules:  # pytest-xdist plugin
+#         import multiprocessing
+#
+#         num = max(multiprocessing.cpu_count() / 2, 1)
+#         args[:] = ["-n", str(num)] + args
+
+@pytest.fixture(scope='session')
 def local_driver():
     options = Options()
     options.add_argument("--headless")
-    options.add_argument("--window-size=1920x1080")
     return webdriver.Firefox(executable_path='C:\Program Files (x86)\Python36-32\drivers\geckodriver.exe',firefox_options=options)
-
-@pytest.fixture(scope='module')
-def grid_driver():
-    nodeURL = "http://10.206.8.69:5566/wd/hub"
-    return webdriver.Remote(command_executor=nodeURL, desired_capabilities=DesiredCapabilities.FIREFOX)
-
-
-@pytest.fixture(scope='module')
-def browser():
-    return pytest.config.getoption("-B")
-
-
-# @pytest.fixture(scope='module')
-# def browserstack_flag():
-#     return pytest.config.getoption("-M")
-
-
-@pytest.fixture(scope='module')
-def browser_version():
-    return pytest.config.getoption("-V")
-
-
-@pytest.fixture(scope='module')
-def platform():
-    return pytest.config.getoption("-P")
-
-
-@pytest.fixture(scope='module')
-def os_version():
-    return pytest.config.getoption("-O")
-
 
 def pytest_addoption(parser):
     parser.addoption("-B", "--browser",
@@ -69,43 +47,56 @@ def pytest_addoption(parser):
                      default=[])
 
 def pytest_generate_tests(metafunc):
-    if 'browser' in metafunc.fixturenames:
-        #if metafunc.config.getoption("-M").lower() == 'y':
-        if metafunc.config.getoption("-B") == ["all"]:
-            metafunc.parametrize("browser,browser_version,platform,os_version",
-                                 browser_platform_conf.cross_browser_cross_platform_config)
+    nodes = browser_platform_conf.cross_browser_cross_platform_config
+    remote_drivers = []
+    for node in nodes:
+        browser = node[0]
+        if browser.lower() == 'firefox':
+            desired_capabilities = DesiredCapabilities.FIREFOX.copy()
+        elif browser.lower() == 'chrome':
+            desired_capabilities = DesiredCapabilities.CHROME.copy()
+        elif browser.lower() == 'ie':
+            desired_capabilities = DesiredCapabilities.INTERNETEXPLORER.copy()
+        elif browser.lower() == 'edge':
+            desired_capabilities = DesiredCapabilities.EDGE.copy()
+        elif browser.lower() == 'android':
+            desired_capabilities = DesiredCapabilities.ANDROID.copy()
+        elif browser.lower() == 'iphone':
+            desired_capabilities = DesiredCapabilities.IPHONE.copy()
+        else:
+            break
+        desired_capabilities['platform'] = node[2]
+        desired_capabilities['os_version'] = node[3]
+        desired_capabilities['version'] = node[1]
+        remote_drivers.append(get_webdriver(desired_capabilities))
+    metafunc.parametrize('driver', remote_drivers)
 
-def pytest_funcarg__driverconfig(request): # factory function
-    return DriverConfig(request)
+def get_webdriver(desired_capabilities):
+    nodeURL = 'http://localhost:4444/wd/hub'
+    print("starting %s\n" % desired_capabilities["browserName"])
+    return webdriver.Remote(command_executor=nodeURL, desired_capabilities=desired_capabilities)
+
+# def pytest_funcarg__driverconfig(request): # factory function
+#     driver = DriverConfig(request)
 
 class DriverConfig:
     def __init__(self,request):
-        self.config = request.config
+        self.config = browser_platform_conf.cross_browser_cross_platform_config
 
-    def get_webdriver(self):
-        browser = self.config.option.browser
-        if browser.lower() == 'firefox':
-            desired_capabilities = DesiredCapabilities.FIREFOX
-        elif browser.lower() == 'chrome':
-            desired_capabilities = DesiredCapabilities.CHROME
+    # def init_webdriver(self):
+    #     threads = []
+    #     for node in self.config:
+    #         browser = node[0]
+    #         if browser.lower() == 'firefox':
+    #             desired_capabilities = DesiredCapabilities.FIREFOX
+    #         elif browser.lower() == 'chrome':
+    #             desired_capabilities = DesiredCapabilities.CHROME
+    #         desired_capabilities['os'] = node[2]
+    #         desired_capabilities['os_version'] = node[3]
+    #         desired_capabilities['browser_version'] = node[1]
+    #         thread = Thread(target=get_webdriver, args=[desired_capabilities])
+    #         threads.append(thread)
+    #         thread.start()
+    #     for thread in threads:
+    #         thread.join()
 
-        desired_capabilities['os'] = platform
-        desired_capabilities['os_version'] = os_version
-        desired_capabilities['browser_version'] = browser_version
-
-        return webdriver.Remote(command_executor='', desired_capabilities=desired_capabilities)
-
-
-def get_webdriver(browser, browser_version, platform, os_version):
-    #"Run the test in browser stack browser stack flag is 'Y'"
-    # USERNAME = user_name  # We fetch values from a conf file in our framework we use on our clients
-    # PASSWORD = access_key
-    if browser.lower() == 'firefox':
-        desired_capabilities = DesiredCapabilities.FIREFOX
-    if browser.lower() == 'chrome':
-        desired_capabilities = DesiredCapabilities.CHROME
-    desired_capabilities['os'] = platform
-    desired_capabilities['os_version'] = os_version
-    desired_capabilities['browser_version'] = browser_version
-
-    return webdriver.Remote(command_executor='', desired_capabilities=desired_capabilities)

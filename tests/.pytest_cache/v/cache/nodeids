@@ -1,5 +1,4 @@
 [
-  "test_hi.py::test_1",
-  "test_hi.py::test_2",
-  "test_tmobile.py::test_tmobile_login_page"
+  "test_tmobile.py::test_tmobile_login_page[driver0]",
+  "test_tmobile.py::test_tmobile_login_page[driver1]"
 ]
