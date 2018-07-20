@@ -1,4 +1,6 @@
 [
-  "test_tmobile.py::TestTMOHome::()::test_tmo_menu_selected",
-  "test_tmobile.py::TestTMOHome::()::test_tmo_menu_unselected"
+  "test_tmobile.py::TestTMOHome::()::test_tmo_menu_selected[chrome__ANY]",
+  "test_tmobile.py::TestTMOHome::()::test_tmo_menu_unselected[chrome__ANY]",
+  "test_tmobile.py::TestTMOHome::()::test_tmo_menu_selected[firefox__ANY]",
+  "test_tmobile.py::TestTMOHome::()::test_tmo_menu_unselected[firefox__ANY]"
 ]
