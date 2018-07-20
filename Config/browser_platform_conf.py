@@ -10,6 +10,7 @@ platforms = ["VISTA"]#, "8.1"]
 # caps['platformName'] = 'Android'
 # caps['deviceOrientation'] = 'portrait'
 
+
 def generate_configuration(browsers=browsers, platforms=platforms, ie_versions=ie_versions,
                            firefox_versions=firefox_versions, chrome_versions=chrome_versions):
     test_config = []

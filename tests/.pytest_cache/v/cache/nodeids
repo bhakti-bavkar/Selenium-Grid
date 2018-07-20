@@ -1,6 +1,4 @@
 [
-  "test_tmobile.py::test_tmo_login_page[driver0]",
-  "test_tmobile.py::test_tmo_login_page[driver1]",
-  "test_tmobile.py::test_tmo_menu[driver0]",
-  "test_tmobile.py::test_tmo_menu[driver1]"
+  "test_tmobile.py::TestTMOHome::()::test_tmo_menu_selected",
+  "test_tmobile.py::TestTMOHome::()::test_tmo_menu_unselected"
 ]

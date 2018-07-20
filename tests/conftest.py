@@ -12,39 +12,59 @@ def pytest_load_initial_conftests(args):
         args[:] = ["-n", str(num)] + args
 
 
-def pytest_generate_tests(metafunc):
-    nodes = [('chrome', '', 'ANY'),('firefox', '', 'ANY')]
-    remote_drivers = []
-    for node in nodes:
-        browser = node[0]
-        if browser.lower() == 'firefox':
-            desired_capabilities = DesiredCapabilities.FIREFOX.copy()
-            driver = webdriver.Firefox
-            executable_path='C:\Program Files (x86)\Python36-32\drivers\geckodriver.exe'
-        elif browser.lower() == 'chrome':
-            desired_capabilities = DesiredCapabilities.CHROME.copy()
-            driver = webdriver.Chrome
-            executable_path = 'C:\Program Files (x86)\Python36-32\drivers\chromedriver.exe'
-        else:
-            desired_capabilities = {}
-            driver = None
-            executable_path = ''
-        # elif browser.lower() == 'ie':
-        #     desired_capabilities = DesiredCapabilities.INTERNETEXPLORER.copy()
-        # elif browser.lower() == 'edge':
-        #     desired_capabilities = DesiredCapabilities.EDGE.copy()
-        # elif browser.lower() == 'android':
-        #     desired_capabilities = DesiredCapabilities.ANDROID.copy()
-        # elif browser.lower() == 'iphone':
-        #     desired_capabilities = DesiredCapabilities.IPHONE.copy()
-        # else:
-        #     break
-        desired_capabilities['version'] = node[1]
-        desired_capabilities['platform'] = node[2]
-        # remote_drivers.append(get_webdriver(desired_capabilities))
-        remote_drivers.append(get_local_driver(driver, executable_path))
-    if 'driver' in metafunc.funcargnames:
-        metafunc.parametrize('driver', remote_drivers)
+@pytest.fixture
+def tmo_home(request):
+    driver = request.param
+    baseURL = "https://www.t-mobile.com/"
+    driver.get(baseURL)
+    WebDriverWait(driver,5).until(EC.title_contains('T-Mobile'))
+    yield
+    driver.close()
+
+
+@pytest.fixture(scope='session')
+def get_driver(request):
+    session = request.node
+    for item in session.items:
+        cls = item.getparent(pytest.Class)
+        setattr(cls.obj,"driver",web_driver)
+    yield
+    web_driver.close()
+
+
+# def pytest_generate_tests(metafunc):
+#     nodes = [('chrome', '', 'ANY'),('firefox', '', 'ANY')]
+#     remote_drivers = []
+#     for node in nodes:
+#         browser = node[0]
+#         if browser.lower() == 'firefox':
+#             desired_capabilities = DesiredCapabilities.FIREFOX.copy()
+#             driver = webdriver.Firefox
+#             executable_path='C:\Program Files (x86)\Python36-32\drivers\geckodriver.exe'
+#         elif browser.lower() == 'chrome':
+#             desired_capabilities = DesiredCapabilities.CHROME.copy()
+#             driver = webdriver.Chrome
+#             executable_path = 'C:\Program Files (x86)\Python36-32\drivers\chromedriver.exe'
+#         else:
+#             desired_capabilities = {}
+#             driver = None
+#             executable_path = ''
+#         # elif browser.lower() == 'ie':
+#         #     desired_capabilities = DesiredCapabilities.INTERNETEXPLORER.copy()
+#         # elif browser.lower() == 'edge':
+#         #     desired_capabilities = DesiredCapabilities.EDGE.copy()
+#         # elif browser.lower() == 'android':
+#         #     desired_capabilities = DesiredCapabilities.ANDROID.copy()
+#         # elif browser.lower() == 'iphone':
+#         #     desired_capabilities = DesiredCapabilities.IPHONE.copy()
+#         # else:
+#         #     break
+#         desired_capabilities['version'] = node[1]
+#         desired_capabilities['platform'] = node[2]
+#         # remote_drivers.append(get_webdriver(desired_capabilities))
+#         remote_drivers.append(get_local_driver(driver, executable_path))
+#     if 'driver' in metafunc.funcargnames:
+#         metafunc.parametrize('driver', remote_drivers, indirect=True)
 
 
 def get_webdriver(desired_capabilities):
