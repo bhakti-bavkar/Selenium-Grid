@@ -13,27 +13,40 @@ platforms = ["VISTA"]#, "8.1"]
 # caps['platformVersion'] = '7.0'
 # caps['platformName'] = 'Android'
 # caps['deviceOrientation'] = 'portrait'
-cross_browser_config = [('chrome', '', 'ANDROID')]
 
 
-def get_driver_config():
-    nodes = cross_browser_config
-    remote_drivers = {}
-    for node in nodes:
-        browser = node[0]
+class DriverConfig:
+    cross_browser_config = [('chrome', '', 'ANY'),
+                            ('firefox', '', 'ANY')]
+    hub = 'http://10.206.8.31:4444/wd/hub'
+
+    @classmethod
+    def get_driver_list(cls):
+        drivers = []
+        for node in cls.cross_browser_config:
+            driver_name = node[0] + '-' + node[1] + '-' + node[2]
+            drivers.append(driver_name)
+        return drivers
+
+    @classmethod
+    def get_driver_config(cls, config):
+        config = config.split('-')
+        browser = config[0]
         if browser.lower() == 'firefox':
             desired_capabilities = DesiredCapabilities.FIREFOX.copy()
-            # driver = webdriver.Firefox
-            # executable_path = 'C:\Program Files (x86)\Python36-32\drivers\geckodriver.exe'
+            driver = webdriver.Firefox
+            executable_path = 'C:\Program Files (x86)\Python36-32\drivers\geckodriver.exe'
         elif browser.lower() == 'chrome':
-            if node[2].lower() in ['any', 'vista', 'windows']:
+            if config[2].lower() in ['any', 'vista', 'windows']:
                 desired_capabilities = DesiredCapabilities.CHROME.copy()
-                # driver = webdriver.Chrome
-                # executable_path = 'C:\Program Files (x86)\Python36-32\drivers\chromedriver.exe'
+                driver = webdriver.Chrome
+                executable_path = 'C:\Program Files (x86)\Python36-32\drivers\chromedriver.exe'
             else: # Android
                 desired_capabilities = DesiredCapabilities.ANDROID.copy()
                 desired_capabilities['browserName'] = 'chrome'
                 desired_capabilities["platform"] = "Android"
+                driver = None
+                executable_path = ''
         elif browser.lower() == 'ie':
             desired_capabilities = DesiredCapabilities.INTERNETEXPLORER.copy()
             driver = webdriver.Ie
@@ -42,25 +55,19 @@ def get_driver_config():
             desired_capabilities = {}
             driver = None
             executable_path = ''
-        desired_capabilities['version'] = node[1]
-        desired_capabilities['platform'] = node[2]
-        driver_name = node[0] + '_' + node[1] + '_' + node[2]
-        remote_drivers[driver_name] = get_remote_webdriver(desired_capabilities)
-        # remote_drivers[driver_name] = get_local_driver(driver, executable_path)
-    return remote_drivers
+        desired_capabilities['version'] = config[1]
+        desired_capabilities['platform'] = config[2]
+        # return cls.get_remote_webdriver(desired_capabilities)
+        return cls.get_local_driver(driver, executable_path)
 
+    @classmethod
+    def get_local_driver(cls, driver, executable_path):
+        return driver(executable_path=executable_path)
 
-def get_local_driver(driver, executable_path):
-    return driver(executable_path=executable_path)
-
-
-def get_remote_webdriver(desired_capabilities):
-    nodeURL = 'http://10.206.8.31:4444/wd/hub'
-    print("\n starting %s" % desired_capabilities["browserName"])
-    return webdriver.Remote(command_executor=nodeURL, desired_capabilities=desired_capabilities)
-
-
-cross_browser_drivers = get_driver_config()
+    @classmethod
+    def get_remote_webdriver(cls, desired_capabilities):
+        print("\n starting %s" % desired_capabilities["browserName"])
+        return webdriver.Remote(command_executor=cls.hub, desired_capabilities=desired_capabilities)
 
 
 def generate_configuration(browsers=browsers, platforms=platforms, ie_versions=ie_versions,

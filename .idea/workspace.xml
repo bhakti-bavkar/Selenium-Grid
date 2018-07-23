@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5dc8946-7018-49bb-9ae8-502a0c4f60de" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/helper/element_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/selenium-grid-sample.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/selenium-grid-sample.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/BasePage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/HomePage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/BaseTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommonLib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommonLib/elementLib.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommonLib/hi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommonLib/supportLib.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/get_ip.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/get_ip_1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drivers/chromedriver_win32.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drivers/geckodriver-v0.20.1-win64.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_hi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/browser_platform_conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/Config/browser_platform_conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper/element_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper/element_helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/.pytest_cache/v/cache/lastfailed" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.pytest_cache/v/cache/lastfailed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/.pytest_cache/v/cache/nodeids" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.pytest_cache/v/cache/nodeids" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_tmobile.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_tmobile.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,23 +22,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.71166205">
+    <splitter split-orientation="horizontal" split-proportion="0.4224138">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="browser_platform_conf.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Config/browser_platform_conf.py">
+          <file leaf-file-name="BasePage.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Pages/BasePage.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="72">
-                  <caret line="62" column="16" lean-forward="true" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="test_tmobile.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tests/test_tmobile.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1445">
-                  <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
+                <state relative-caret-position="153">
+                  <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
                   <folding>
                     <element signature="e#0#55#0" expanded="true" />
                   </folding>
@@ -49,20 +37,32 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/.gitignore">
+          <file leaf-file-name="HomePage.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Pages/HomePage.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="5" selection-start-column="5" selection-end-column="5" />
+                <state relative-caret-position="74">
+                  <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="conftest.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tests/conftest.py">
+          <file leaf-file-name="test_tmobile.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/tests/test_tmobile.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="548">
-                  <caret line="81" selection-start-line="81" selection-end-line="81" />
+                <state relative-caret-position="-251">
+                  <caret line="1" selection-start-line="1" selection-end-line="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BaseTest.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tests/BaseTest.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="34">
+                  <caret line="2" selection-start-line="2" selection-end-line="2" />
                 </state>
               </provider>
             </entry>
@@ -71,9 +71,46 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Config/grid/__init__.py">
-              <provider selected="true" editor-type-id="text-editor" />
+          <file leaf-file-name="browser_platform_conf.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Config/browser_platform_conf.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="722">
+                  <caret line="59" column="63" lean-forward="true" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
+                  <folding>
+                    <element signature="e#0#30#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="conftest.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/tests/conftest.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="29">
+                  <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+                  <folding>
+                    <element signature="e#0#13#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="node_1.json" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Config/grid/jars/nodes/node_1.json">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="510">
+                  <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="grid_startup.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Config/grid/grid_startup.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+                </state>
+              </provider>
             </entry>
           </file>
         </leaf>
@@ -97,6 +134,7 @@
       <find>elementLib</find>
       <find>get_attrubute</find>
       <find>supportLib</find>
+      <find>check_element_visible</find>
     </findStrings>
     <replaceStrings>
       <replace>cls</replace>
@@ -127,14 +165,17 @@
         <option value="$PROJECT_DIR$/tests/test_hi.py" />
         <option value="$PROJECT_DIR$/CommonLib/elementLib.py" />
         <option value="$PROJECT_DIR$/CommonLib/supportLib.py" />
-        <option value="$PROJECT_DIR$/tests/conftest.py" />
         <option value="$PROJECT_DIR$/Config/grid/jars/nodes/node_2.json" />
         <option value="$PROJECT_DIR$/Config/grid/jars/nodes/node_1.json" />
         <option value="C:/Program Files (x86)/Python36-32/Lib/site-packages/selenium/webdriver/common/desired_capabilities.py" />
-        <option value="$PROJECT_DIR$/Config/browser_platform_conf.py" />
-        <option value="$PROJECT_DIR$/helper/element_helper.py" />
-        <option value="$PROJECT_DIR$/tests/test_tmobile.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/tests/BaseTest.py" />
+        <option value="$PROJECT_DIR$/helper/element_helper.py" />
+        <option value="$PROJECT_DIR$/Pages/BasePage.py" />
+        <option value="$PROJECT_DIR$/Config/browser_platform_conf.py" />
+        <option value="$PROJECT_DIR$/Pages/HomePage.py" />
+        <option value="$PROJECT_DIR$/tests/test_tmobile.py" />
+        <option value="$PROJECT_DIR$/tests/conftest.py" />
       </list>
     </option>
   </component>
@@ -181,6 +222,27 @@
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="selenium-grid-sample" type="cbb8eebc:String" user="selenium-grid-sample" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="selenium-grid-sample" type="cbb8eebc:String" user="selenium-grid-sample" />
+              <item name="Config" type="cbb8eebc:String" user="Config" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="selenium-grid-sample" type="cbb8eebc:String" user="selenium-grid-sample" />
+              <item name="Config" type="cbb8eebc:String" user="Config" />
+              <item name="grid" type="cbb8eebc:String" user="grid" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="selenium-grid-sample" type="cbb8eebc:String" user="selenium-grid-sample" />
+              <item name="Pages" type="cbb8eebc:String" user="Pages" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="selenium-grid-sample" type="cbb8eebc:String" user="selenium-grid-sample" />
+              <item name="tests" type="cbb8eebc:String" user="tests" />
             </path>
           </expand>
           <select />
@@ -302,55 +364,61 @@
       <option name="project" value="LOCAL" />
       <updated>1532102136150</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added helper package and .gitignore">
+      <created>1532136623862</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1532136623863</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest-main - 2018.07.20 at 13h 44m 11s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 18h 21m 12s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest-main - 2018.07.20 at 13h 45m 06s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 19h 11m 52s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest-main - 2018.07.20 at 14h 18m 49s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 19h 16m 55s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest-main - 2018.07.20 at 14h 21m 32s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 19h 33m 48s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest-main - 2018.07.20 at 14h 42m 15s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 19h 34m 49s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest-main - 2018.07.20 at 15h 36m 20s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 19h 35m 22s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest-main - 2018.07.20 at 15h 36m 35s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 19h 36m 50s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest-main - 2018.07.20 at 15h 45m 05s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 19h 38m 01s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest-main - 2018.07.20 at 15h 46m 42s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 19h 40m 33s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest-main - 2018.07.20 at 15h 54m 33s.xml">
+    <history-entry file="pytest-main - 2018.07.22 at 19h 44m 45s.xml">
       <configuration name="pytest-main" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20278184" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15080526" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.26822916" side_tool="true" weight="0.35060638" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.2693997" side_tool="true" visible="true" weight="0.23492064" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7317708" weight="0.6361632" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7306003" visible="true" weight="0.23492064" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.90208334" weight="0.5259096" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.90208334" weight="0.4031746" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -362,21 +430,21 @@
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1359375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7317708" weight="0.35060638" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.90208334" weight="0.37596473" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.26822916" side_tool="true" visible="true" weight="0.35060638" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -385,7 +453,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Test script for Home Page" />
     <MESSAGE value="Added 3 tests for home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added 3 tests for home page" />
+    <MESSAGE value="added helper package and .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="added helper package and .gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -396,11 +465,16 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="22" />
+      <option name="time" value="26" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>sys.modules</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>config.cross_browser_drivers</expression-string>
         <language-id>Python</language-id>
@@ -424,39 +498,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/test_hi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_tmobile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/browser_platform_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="38" column="62" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/selenium/webdriver/remote/webdriver.py" />
-    <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/selenium/webdriver/common/desired_capabilities.py" />
-    <entry file="file://$PROJECT_DIR$/tests/conftest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="89" column="49" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/pyconftest.py" />
-    <entry file="file://$PROJECT_DIR$/tests/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/tests/pytest.ini.py" />
     <entry file="file://$PROJECT_DIR$/tests/geckodriver.log">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -467,19 +508,8 @@
     <entry file="file://$PROJECT_DIR$/Config/node.json" />
     <entry file="file://C:/Program Files/Python36/Lib/site-packages/selenium/webdriver/common/desired_capabilities.py" />
     <entry file="file://C:/Program Files/Python36/Lib/tokenize.py" />
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/pluggy/callers.py" />
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/pluggy/__init__.py" />
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/_pytest/python.py" />
-    <entry file="file://$PROJECT_DIR$/Config/get_ip_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/get_ip.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/get_ip_1.py" />
+    <entry file="file://$PROJECT_DIR$/Config/get_ip.py" />
     <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/_pytest/capture.py" />
     <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/selenium/webdriver/remote/webdriver.py" />
     <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/pkg_resources/__init__.py" />
@@ -498,83 +528,164 @@
       </provider>
     </entry>
     <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/selenium/webdriver/support/event_firing_webdriver.py" />
-    <entry file="file://$PROJECT_DIR$/CommonLib/hi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_hi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/CommonLib/hi.py" />
+    <entry file="file://$PROJECT_DIR$/tests/test_hi.py" />
     <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/selenium/webdriver/support/expected_conditions.py" />
     <entry file="file://$PROJECT_DIR$/CommonLib/elementLib.py" />
     <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/selenium/webdriver/common/by.py" />
     <entry file="file://$PROJECT_DIR$/tests/pytest.ini">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Config/grid/grid_startup.py" />
-    <entry file="file://$PROJECT_DIR$/CommonLib/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/CommonLib/__init__.py" />
     <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/_pytest/python.py" />
-    <entry file="file://$PROJECT_DIR$/Config/grid/jars/nodes/node_1.json" />
     <entry file="file://$PROJECT_DIR$/Config/grid/jars/server/hub.json" />
     <entry file="file://$PROJECT_DIR$/Config/grid/jars/nodes/node_2.json" />
     <entry file="file://$PROJECT_DIR$/Config/grid/jars/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://C:/Program Files (x86)/Python36-32/Lib/site-packages/selenium/webdriver/common/desired_capabilities.py" />
-    <entry file="file://$PROJECT_DIR$/Config/grid/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CommonLib/supportLib.py">
+    <entry file="file://$PROJECT_DIR$/CommonLib/supportLib.py" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-end-line="11" />
+        <state>
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/grid/jars/nodes/node_1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/selenium/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/helper/element_helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Config/browser_platform_conf.py">
+    <entry file="file://$PROJECT_DIR$/Pages/BasePage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="62" column="16" lean-forward="true" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/conftest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_tmobile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
+        <state relative-caret-position="153">
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/_pytest/assertion/rewrite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        <state relative-caret-position="51">
+          <caret line="218" column="31" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/_pytest/python.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="460" selection-start-line="460" selection-end-line="460" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/pluggy/callers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="200" selection-start-line="200" selection-end-line="200" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/pluggy/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="616" selection-start-line="616" selection-end-line="616" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/_pytest/runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="560" selection-start-line="560" selection-end-line="560" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/_pytest/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="610" selection-start-line="610" selection-end-line="610" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/py/_path/local.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="667" selection-start-line="667" selection-end-line="667" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pages/HomePage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/BaseTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/grid/grid_startup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/grid/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/_pytest/fixtures.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="1149" selection-start-line="1149" selection-end-line="1149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/browser_platform_conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="59" column="63" lean-forward="true" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_tmobile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-251">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/conftest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

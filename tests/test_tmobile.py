@@ -1,92 +1,108 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
+import pytest
 from selenium.webdriver.support import expected_conditions as EC
-from helper import element_helper as help
+from tests.BaseTest import BaseTest
+from Pages.HomePage import HomePage
 
 
-class TestTMOHome:
-    def test_tmo_home_page(self, driver):
-        driver.get('http://www.t-mobile.com')
-        WebDriverWait(driver,25).until(EC.title_contains('T-Mobile'))
-        assert 'Cell Phones | 4G Phones | iPhone and Android Phones | T-Mobile' in driver.title
+class TestTMOHome(BaseTest):
+    @pytest.fixture()# can use autouse=True
+    def home(self):
+        home_page = HomePage(self.driver)
+        home_page.open()
+        home_page.wait_for_page(EC.title_contains, 'T-Mobile', 25)
+        return home_page
 
-        logo = driver.find_element(By.CSS_SELECTOR, ".logo.t-mobile")
-        home_link = logo.find_element(By.CSS_SELECTOR, 'a[data-analytics-id*="-logo"]')
+    def test_tmo_home_page(self, home):
+        home_elements = home.elements
+        assert 'Cell Phones | 4G Phones | iPhone and Android Phones | T-Mobile' \
+               in home.get_page_title
+
+        logo = home.check_element_visible(self.driver, *home_elements['logo'])
+        assert logo is not False
+        home_link = home.check_element_visible(logo, *home_elements['link_logo'])
         assert 'www.t-mobile.com' in home_link.get_attribute('href')
 
-        nav_links = driver.find_element(By.CSS_SELECTOR, 'div.nav-links')
+        home_links = home_elements['link_menu']
+        nav_links = home.get_element(home_links['parent'])
+        assert nav_links is not False
 
-        deals = nav_links.find_element(By.CSS_SELECTOR, 'a[data-analytics-id*="-link1"]')
+        deals = home.check_element_visible(nav_links, home_links['deals'])
+        assert deals is not False
         assert deals.text == 'DEALS'
         assert 'www.t-mobile.com/offers/deals-hub' in deals.get_attribute('href')
 
-        phones = nav_links.find_element(By.CSS_SELECTOR, 'a[data-analytics-id*="-link2"]')
+        phones = home.check_element_visible(nav_links, home_links['phones'])
+        assert phones is not False
         assert phones.text == 'PHONES'
         assert 'www.t-mobile.com/cell-phones' in phones.get_attribute('href')
 
-        plans = nav_links.find_element(By.CSS_SELECTOR, 'a[data-analytics-id*="-link3"]')
+        plans = home.check_element_visible(nav_links, home_links['plans'])
+        assert plans is not False
         assert plans.text == 'PLANS'
         assert 'www.t-mobile.com/cell-phone-plans' in plans.get_attribute('href')
 
-        my_tmo = nav_links.find_element(By.CSS_SELECTOR, 'a[data-analytics-id*="-link4"]')
+        my_tmo = home.check_element_visible(nav_links, home_links['my_tmo'])
+        assert my_tmo is not False
         assert my_tmo.text == 'MY T-MOBILE'
         assert 'my.t-mobile.com' in my_tmo.get_attribute('href')
 
-    def test_tmo_menu_selected(self, driver):
-        driver.get('http://www.t-mobile.com')
-        wait = WebDriverWait(driver,25)
-        wait.until(EC.title_contains('T-Mobile'))
-        menu_text = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.hamburger-text')))
-        assert 'MENU' in menu_text.text
-        menu_text.click()
+        menu = home.check_element_visible(None, home_elements['side_menu'])
+        assert menu is not False
+        assert 'MENU' in menu.text
 
-        menu_overlay = driver.find_element(By.ID, 'overlay-menu')
+    def test_tmo_menu_selected(self, home):
+        menu_bar = home.menu.elements
+        # click Menu
+        home.click_side_menu()
+        menu_overlay = home.menu.check_element_visible(self.driver, menu_bar['menu_overlay'])
+        assert menu_overlay is not False
         assert 'visibility: visible' in menu_overlay.get_attribute('style')
 
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Unlimited plan")]'), 'Unlimited plan')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Shop phones")]'), 'Shop phones')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Watches & tablets")]'), 'Watches & tablets')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Deals")]'), 'Deals')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//div[contains(., "Join T-Mobile")]'), 'Join T-Mobile')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "See how much you could save")]'), 'See how much you could save')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "We’ll help you join")]'), 'We’ll help you join')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Bring your own phone")]'), 'Bring your own phone')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//div[contains(., "What it\'s like on T-Mobile")]'), 'What it\'s like on T-Mobile')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Check out the coverage")]'), 'Check out the coverage')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "International calling")]'), 'International calling')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Traveling abroad")]'), 'Traveling abroad')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//div[contains(., "More than wireless")]'), 'More than wireless')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Smart devices")]'), 'Smart devices')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Use multiple numbers on my phone")]'), 'Use multiple numbers on my phone')
-        help.check_element_visible(menu_overlay,
-                                         (By.XPATH, '//a[contains(., "Accessories")]'), 'Accessories')
+        assert home.menu.page_elements_present(menu_bar) is not False
 
         # Check that Home Page freezes and nothing gets clicked except in Menu Bar
-        help.check_element_visible(driver, (By.CSS_SELECTOR, '.mute-screen.on'), 'Home Page is not accessible')
+        assert home.check_element_visible(self.driver, home.elements['freeze_screen'])
 
-    def test_tmo_menu_unselected(self, driver):
-        driver.get('http://www.t-mobile.com')
-        WebDriverWait(driver,25).until(EC.title_contains('T-Mobile'))
-        # select Menu
-        driver.find_element(By.CSS_SELECTOR, 'span.hamburger-text').click()
+    def test_tmo_menu_unselected(self, home):
+        menu_bar = home.menu.elements
+        # click Menu
+        home.click_side_menu()
         # unselect Menu
-        driver.find_element(By.CSS_SELECTOR,'.mute-screen').click()
-        menu_overlay = driver.find_element(By.ID, 'overlay-menu')
+        home.unfreeze_home_screen()
+        menu_overlay = home.menu.check_element_visible(self.driver, menu_bar['menu_overlay'])
+        assert menu_overlay is False
         assert 'visibility: hidden' in menu_overlay.get_attribute('style')
 
 
+
+
+# @pytest.fixture()
+# def my_fixture(request):
+#     print('\n-----------------')
+#     print('fixturename : %s' % request.fixturename)
+#     print('scope       : %s' % request.scope)
+#     print('function    : %s' % request.function.__name__)
+#     print('cls         : %s' % request.cls)
+#     print('module      : %s' % request.module.__name__)
+#     print('fspath      : %s' % request.fspath)
+#     print('-----------------')
+#
+#     if request.cls is not None:
+#         request.cls.name = request.function.__name__
+#     if request.function.__name__ == 'test_three':
+#         request.applymarker(pytest.mark.xfail)
+#
+#
+# def test_one(my_fixture):
+#     print('test_one():')
+#
+#
+# class TestClass():
+#     def test_two(self, my_fixture):
+#         print('test_two()')
+#         print(self.name)
+#
+#
+# def test_three(my_fixture):
+#     print('test_three()')
+#     assert False

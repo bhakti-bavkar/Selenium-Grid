@@ -1,5 +1,5 @@
 import pytest
-from Config import browser_platform_conf as config
+from Config.browser_platform_conf import DriverConfig
 
 
 def pytest_load_initial_conftests(args):
@@ -19,19 +19,18 @@ def pytest_load_initial_conftests(args):
 #     yield
 
 def pytest_generate_tests(metafunc):
-    drivers = config.cross_browser_drivers
+    drivers = DriverConfig.get_driver_list()
     if 'driver' in metafunc.fixturenames:
             metafunc.parametrize('driver', drivers, indirect=True)
 
 
-@pytest.fixture(scope='class')
+@pytest.fixture()
 def driver(request):
-    drivers = config.cross_browser_drivers
     try:
-        # d = drivers[request.param]
-        # yield d
-        # d.close()
-        return drivers[request.param]
+        web_driver = DriverConfig.get_driver_config(request.param)
+        if request.cls is not None:
+            request.cls.driver = web_driver
+        request.addfinalizer(web_driver.close)
     except Exception:
         print('Driver with given parameter not found')
 
