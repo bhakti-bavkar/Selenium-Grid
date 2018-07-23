@@ -1,5 +1,7 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from Config import DRIVER_PATH
 from selenium.webdriver.firefox.options import Options
 
 browsers = ["chrome", "firefox"]#, "IE"]
@@ -35,12 +37,12 @@ class DriverConfig:
         if browser.lower() == 'firefox':
             desired_capabilities = DesiredCapabilities.FIREFOX.copy()
             driver = webdriver.Firefox
-            executable_path = 'C:\Program Files (x86)\Python36-32\drivers\geckodriver.exe'
+            executable_path = os.path.join(DRIVER_PATH, 'geckodriver.exe')
         elif browser.lower() == 'chrome':
             if config[2].lower() in ['any', 'vista', 'windows']:
                 desired_capabilities = DesiredCapabilities.CHROME.copy()
                 driver = webdriver.Chrome
-                executable_path = 'C:\Program Files (x86)\Python36-32\drivers\chromedriver.exe'
+                executable_path = os.path.join(DRIVER_PATH, 'chromedriver.exe')
             else: # Android
                 desired_capabilities = DesiredCapabilities.ANDROID.copy()
                 desired_capabilities['browserName'] = 'chrome'
@@ -50,7 +52,7 @@ class DriverConfig:
         elif browser.lower() == 'ie':
             desired_capabilities = DesiredCapabilities.INTERNETEXPLORER.copy()
             driver = webdriver.Ie
-            executable_path = 'C:\Program Files (x86)\Python36-32\drivers\IEDriverServer.exe'
+            executable_path = os.path.join(DRIVER_PATH, 'IEDriverServer.exe')
         else:
             desired_capabilities = {}
             driver = None

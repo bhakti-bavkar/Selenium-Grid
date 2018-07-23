@@ -2,22 +2,6 @@ import pytest
 from Config.browser_platform_conf import DriverConfig
 
 
-def pytest_load_initial_conftests(args):
-    if "xdist" in sys.modules:  # pytest-xdist plugin
-        import multiprocessing
-        num = max(multiprocessing.cpu_count() / 2, 1)
-        args[:] = ["-n", str(num)] + args
-
-
-# @pytest.fixture(scope='session')
-# def get_driver(request):
-#     session = request.node
-#     web_drivers = get_driver_config()
-#     for item in session.items:
-#         cls = item.getparent(pytest.Class)
-#         setattr(cls.obj,"driver",web_drivers)
-#     yield
-
 def pytest_generate_tests(metafunc):
     drivers = DriverConfig.get_driver_list()
     if 'driver' in metafunc.fixturenames:
@@ -31,6 +15,7 @@ def driver(request):
         if request.cls is not None:
             request.cls.driver = web_driver
         request.addfinalizer(web_driver.close)
+        return web_driver
     except Exception:
         print('Driver with given parameter not found')
 
@@ -52,29 +37,3 @@ def driver(request):
 #     for thread in threads:
 #         thread.join()
 
-
-def pytest_addoption(parser):
-    parser.addoption("-B", "--browser",
-                     dest="browser",
-                     action="append",
-                     default=[],
-                     help="Browser. Valid options are firefox, ie and chrome")
-    # parser.addoption("-M", "--browserstack_flag",
-    #                  dest="browserstack_flag",
-    #                  default="N",
-    #                  help="Run the test in Browserstack: Y or N")
-    parser.addoption("-O", "--os_version",
-                     dest="os_version",
-                     action="append",
-                     help="The operating system: xp, 7",
-                     default=[])
-    parser.addoption("-V", "--ver",
-                     dest="browser_version",
-                     action="append",
-                     help="The version of the browser: a whole number",
-                     default=[])
-    parser.addoption("-P", "--platform",
-                     dest="platform",
-                     action="append",
-                     help="The operating system: Windows 7, Linux",
-                     default=[])

@@ -7,7 +7,7 @@ from helper import element_helper as Help
 class BasePage:
     def __init__(self, driver, base_url='http://www.t-mobile.com'):
         self.driver = driver
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(5)
         self.base_url = base_url
         self.elements = {}
 
@@ -53,7 +53,7 @@ class BasePage:
                 if not status:
                     return False
                 continue
-            status = self.check_element_visible(parent, locator)
+            status = self.check_element_visible(parent, *locator)
             if not status:
                 print("Element not found: " + element[0] + element[1])
                 return False
