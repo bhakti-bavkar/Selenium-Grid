@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import StaleElementReferenceException
 from helper import element_helper as Help
 
 
@@ -23,19 +24,25 @@ class BasePage:
         except NoSuchElementException:
             return "Element can not be found on page"
 
-    def wait_for_element(self, timeout=10, condition=None, *locator):
-        wait = WebDriverWait(self.driver, timeout)
+    def wait_for_element(self, timeout=5, condition=None, *locator):
+        wait = WebDriverWait(self.driver, timeout, poll_frequency=0.1)
         try:
             return wait.until(condition(locator))
         except TimeoutException:
             return False
+        except StaleElementReferenceException:
+            return False
 
-    def wait_for_page(self, condition, title, timeout=10):
-        wait = WebDriverWait(self.driver, timeout)
+    def wait_for_page(self, condition, title, timeout=5):
+        wait = WebDriverWait(self.driver, timeout, poll_frequency=0.1)
         try:
             return wait.until(condition(title))
         except TimeoutException:
             return False
+
+    def wait_for_change(self, locator, timeout=5):
+        wait = WebDriverWait(self.driver, timeout, poll_frequency=0.1)
+        return wait.until(Help.wait_for_display(locator))
 
     def page_elements_present(self, elements):
         if len(elements) <= 0:
@@ -55,7 +62,7 @@ class BasePage:
                 continue
             status = self.check_element_visible(parent, *locator)
             if not status:
-                print("Element not found: " + element[0] + element[1])
+                print("Element not found: " + str(element))
                 return False
             return True
 

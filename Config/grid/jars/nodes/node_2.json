@@ -9,7 +9,7 @@
     },
     {
       "browserName": "chrome",
-      "maxInstances": 1,
+      "maxInstances": 5,
       "seleniumProtocol": "WebDriver"
     },
     {
@@ -31,7 +31,7 @@
   "port": 6666,
   "register": true,
   "registerCycle": 5000,
-  "hub": "http://10.206.8.31:4444",
+  "hub": "http://10.206.8.26:4444",
   "nodeStatusCheckTimeout": 5000,
   "nodePolling": 5000,
   "role": "node",

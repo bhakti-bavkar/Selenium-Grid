@@ -69,6 +69,7 @@ class TestTMOHome(BaseTest):
         home.click_side_menu()
         # unselect Menu
         home.unfreeze_home_screen()
-        menu_overlay = home.menu.check_element_visible(self.driver, *menu_bar['menu_overlay'])
-        assert 'visibility: hidden' in menu_overlay.get_attribute('style')
+        menu_overlay = home.menu.wait_for_change(menu_bar['menu_overlay'])
+        assert menu_overlay is not False
+        assert menu_overlay.value_of_css_property("visibility") == 'hidden'
 

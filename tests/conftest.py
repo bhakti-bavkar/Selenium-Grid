@@ -8,10 +8,10 @@ def pytest_generate_tests(metafunc):
             metafunc.parametrize('driver', drivers, indirect=True)
 
 
-@pytest.fixture()
+@pytest.fixture(scope='class')
 def driver(request):
     try:
-        web_driver = DriverConfig.get_driver_config(request.param)
+        web_driver = DriverConfig.get_remote_driver_config(request.param)
         if request.cls is not None:
             request.cls.driver = web_driver
         request.addfinalizer(web_driver.close)

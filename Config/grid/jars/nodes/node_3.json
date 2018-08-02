@@ -4,7 +4,7 @@
     {
       "browserName": "firefox",
       "marionette": true,
-      "maxInstances": 5,
+      "maxInstances": 0,
       "seleniumProtocol": "WebDriver"
     },
     {
@@ -15,7 +15,7 @@
     {
       "browserName": "internet explorer",
       "platform": "WINDOWS",
-      "maxInstances": 0,
+      "maxInstances": 5,
       "seleniumProtocol": "WebDriver"
     },
     {
